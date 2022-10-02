@@ -38,6 +38,10 @@ app.get("/", function(req,res){
   res.render("home")
 });
 
+ratelimit = require ('express');
+limiter = new ratelimit({windowms:1*60*1000, // 1 minute max: 5
+})
+
 app.get("/secret",isLoggedIn ,function(req,res){
     res.render("secret")
 });
